@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackJack.Android", "BlackJack\BlackJack.Android\BlackJack.Android.csproj", "{4332A1A3-7AF2-42E3-810A-715BB13B29DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackJack", "BlackJack\BlackJack\BlackJack.csproj", "{1223D702-1897-4C3F-A303-074CCE302A3E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4332A1A3-7AF2-42E3-810A-715BB13B29DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4332A1A3-7AF2-42E3-810A-715BB13B29DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4332A1A3-7AF2-42E3-810A-715BB13B29DE}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{4332A1A3-7AF2-42E3-810A-715BB13B29DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4332A1A3-7AF2-42E3-810A-715BB13B29DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4332A1A3-7AF2-42E3-810A-715BB13B29DE}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{1223D702-1897-4C3F-A303-074CCE302A3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1223D702-1897-4C3F-A303-074CCE302A3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1223D702-1897-4C3F-A303-074CCE302A3E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{1223D702-1897-4C3F-A303-074CCE302A3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1223D702-1897-4C3F-A303-074CCE302A3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1223D702-1897-4C3F-A303-074CCE302A3E}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {720960C5-11DF-4AEA-9005-099E8F61B6D4}
+	EndGlobalSection
+EndGlobal
