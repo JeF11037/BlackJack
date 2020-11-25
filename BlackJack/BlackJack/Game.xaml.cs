@@ -19,6 +19,7 @@ namespace BlackJack
             InitializeComponent();
 
             strongbox.PLAYER_score = new List<int>();
+            strongbox.PAGE_page = new List<ContentPage>();
 
             tapGestureRecognizer.Tapped += TapGestureRecognizer_Tapped;
 
@@ -53,7 +54,7 @@ namespace BlackJack
                 {
                     Text = temp.ToString(),
                     FontSize = Device.GetNamedSize(NamedSize.Header, typeof(Label)),
-                    TextColor = Color.Black
+                    TextColor = Color.Black,
                 };
                 lbl.GestureRecognizers.Add(tapGestureRecognizer);
                 stack.Children.Add(lbl);
@@ -64,6 +65,10 @@ namespace BlackJack
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
+            if (strongbox.PAGE_page.Count > 0)
+            {
+                DeletePage();
+            }
             Label lbl = (Label)sender;
             strongbox.DECK_size = int.Parse(lbl.Text);
             switch (strongbox.DECK_size)
@@ -89,7 +94,11 @@ namespace BlackJack
             }
             for (int tick = 0; tick < 2; tick++)
             {
-                this.Children.Add(CreatePageByParams());
+                strongbox.PAGE_page.Add(CreatePageByParams());
+            }
+            foreach (var el in strongbox.PAGE_page)
+            {
+                this.Children.Add(el);
             }
         }
 
@@ -111,7 +120,14 @@ namespace BlackJack
                 TextColor = Color.Black
             };
 
-            int temp = int.Parse(strongbox.DECK_decks[strongbox.DECK_chosen][rnd.Next(0, strongbox.DECK_decks[strongbox.DECK_chosen].Count)]);
+            int temp = rnd.Next(0, 10);
+            try
+            {
+                temp = int.Parse(strongbox.DECK_decks[strongbox.DECK_chosen][rnd.Next(0, strongbox.DECK_decks[strongbox.DECK_chosen].Count)]);
+            }
+            catch (Exception)
+            {
+            }
             strongbox.PLAYER_score.Add(temp);
 
             Label value = new Label
@@ -209,15 +225,43 @@ namespace BlackJack
             return contentPage;
         }
 
+        private void DeletePage()
+        {
+            try
+            {
+                foreach (var el in strongbox.PAGE_page)
+                {
+                    this.Children.Remove(el);
+                }
+                strongbox.PAGE_page.Clear();
+                strongbox.DECK_deck.Clear();
+            }
+            catch (Exception)
+            {
+            }
+        }
+
         private void More_Clicked(object sender, EventArgs e)
         {
-            this.Children.Add(CreatePageByParams());
+            ContentPage contentPage = CreatePageByParams();
+            strongbox.PAGE_page.Add(contentPage);
+            this.Children.Add(contentPage);
         }
 
         private async void Pass_Clicked(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            await DisplayAlert("Result", "Your result: " + strongbox.PLAYER_score.Sum().ToString() + "\nYour opponent result: " + rnd.Next(0, 25), "OK");
+            int temp = rnd.Next(0, 25);
+            await DisplayAlert("Result", "Your result: " + strongbox.PLAYER_score.Sum().ToString() + "\nYour opponent result: " + temp, "OK");
+            if (strongbox.PLAYER_score.Sum() > temp && strongbox.PLAYER_score.Sum() < 22)
+            {
+                await DisplayAlert("Winner", "You Won!", "OK");
+            }
+            else
+            {
+                await DisplayAlert("Winner", "Your opponent Won!", "OK");
+            }
+            DeletePage();
         }
 
         

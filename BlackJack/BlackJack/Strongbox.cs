@@ -28,5 +28,6 @@ namespace BlackJack
             }
         }
         public List<int> PLAYER_score { get; set; }
+        public List<Xamarin.Forms.ContentPage> PAGE_page { get; set; }
     }
 }
